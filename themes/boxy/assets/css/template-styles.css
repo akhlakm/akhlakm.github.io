@@ -5,6 +5,18 @@
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Cascadia';
+    src: url('{{ "css/fonts/CascadiaMono-italic.woff2" | absURL }}') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Cascadia';
+    src: url('{{ "css/fonts/CascadiaMono.woff2" | absURL }}') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 *,
 *::before,
 *::after {
@@ -152,7 +164,7 @@ pre,
     border: 1px solid;
 }
 code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: Cascadia, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 0.85em;
 }
 .cmd {
