@@ -1,0 +1,4 @@
+baseURL = 'http://akhlakm.github.io/'
+languageCode = 'en-us'
+title = 'Akhlak Mahmood'
+theme = "ananke"
