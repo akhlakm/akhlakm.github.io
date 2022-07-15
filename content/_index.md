@@ -1,7 +1,6 @@
 ---
 title: "About Me"
 date: 2022-07-14T21:07:30-04:00
-lastmod: 2022-07-14T21:07:30-04:00
 tags: [about]
 toc: false
 ---
