@@ -19,7 +19,7 @@ imaging:
 params:
   description: PhD Student,<br/> NC State University
   homeMetaContent: PhD Student, Computational Materials Science and Informatics, NC State University.
-  footer: (C) Akhlak Mahmood 2022
+  footer: "&copy; Akhlak Mahmood 2022 | Email: <code>contact</code> at <code>akhlakm</code> dot <code>com</code>"
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: Jan 2, 2006
   # codePenUser: someUser
@@ -34,7 +34,7 @@ params:
 
 menu:
   nav:
-    - name: About
+    - name: About Me
       url: /
       weight: 1
     - name: Tags
