@@ -1,0 +1,73 @@
+baseURL: 'http://akhlakm.github.io/'
+languageCode: 'en-us'
+title: 'Akhlak Mahmood'
+theme: "boxy"
+
+defaultContentLanguage: en
+# googleAnalytics: 
+enableGitInfo: true
+
+taxonomies:
+  tag: tags
+
+permalinks:
+  post: /:filename/
+
+imaging:
+  quality: 99
+
+params:
+  description: PhD Student,<br/> NC State University
+  homeMetaContent: PhD Student, Computational Materials Science and Informatics, NC State University.
+  footer: (C) Akhlak Mahmood 2022
+  # For more date formats see https://gohugo.io/functions/format/
+  dateFormat: Jan 2, 2006
+  # codePenUser: someUser
+  katex: true
+  hideHeaderLinks: true
+  search: true
+  showThemeSwitcher: false
+  defaultDarkTheme: false
+  moveFooterToHeader: false
+  navTitleText: Akhlak Mahmood
+  logoAlt: Website logo
+
+menu:
+  nav:
+    - name: About
+      url: /
+      weight: 1
+    - name: Tags
+      url: /tags/
+      weight: 3
+
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute: true
+      autoHeadingID: true
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xHTML: false
+  highlight:
+    codeFences: false
+    hl_Lines: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    style: monokai
+    tabWidth: 4
+  tableOfContents:
+    endLevel: 6
+    startLevel: 1

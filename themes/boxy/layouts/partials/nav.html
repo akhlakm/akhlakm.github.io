@@ -1,4 +1,15 @@
 <nav id="patterns-nav" class="patterns" role="navigation">
+  <!-- Theme button -->
+  <div
+  {{ if eq .Site.Params.showThemeSwitcher false }}style="display: none;"{{ end }}
+  >
+    <label for="themer">
+      {{ T "dark_theme" }} <input type="checkbox" id="themer" class="vh">
+      <!-- Shows "on" or "off" -->
+      <span aria-hidden="true"></span>
+    </label>
+  </div>
+
   <h2 class="vh">{{ T "nav_main_navigation" }}</h2>
   <button id="menu-button" aria-expanded="false">
     <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
@@ -6,6 +17,7 @@
     </svg>
     {{ T "nav_button_menu" }}
   </button>
+
   {{ $current := . }}
   <ul id="patterns-list">
   {{ range .Site.Menus.nav }}
