@@ -14,6 +14,8 @@ Thank you for visiting!
 {{< ticks >}}
 <!-- * [My CV]() -->
 * [My Google Scholar Profile](https://scholar.google.com/citations?user=S-uoOngAAAAJ&hl=en)
+* [Connect me via LinkedIn](https://www.linkedin.com/in/akhlakm/)
+* [Follow me on ResearchGate](https://www.researchgate.net/profile/Akhlak-Ul-Mahmood)
 <!-- * [My Current Research Projects]() -->
 <!-- * [Books I am Reading]() and [Books I have Read]() -->
 <!-- * [Hobbies and Personal Projects]() -->
