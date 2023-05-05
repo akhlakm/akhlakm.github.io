@@ -3,17 +3,38 @@ project:
 
 website:
   title: "Akhlak Mahmood"
+  site-url: "https://akhlakm.github.io/"
+  google-analytics: "G-H03VFES256"
+  cookie-consent: true
+
   navbar:
+    tools:
+        - icon: github
+          href: https://github.com/akhlakm/
     left:
       - href: index.qmd
         text: Home
       - about.qmd
 
+  sidebar: 
+    contents: auto
+
+  page-navigation: true
+  reader-mode: true
+  back-to-top-navigation: true
+  page-footer: "&copy; Akhlak Mahmood 2023"
+
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
     css: styles.css
     toc: true
+    html-math-method: katex
+    link-external-newwindow: true
+    strip-comments: true
+
 
 
 
