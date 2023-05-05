@@ -1,6 +1,9 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
 website:
   title: "Akhlak Mahmood"
   site-url: "https://akhlakm.github.io/"
