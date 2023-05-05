@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "pytorch/check_pytorch_cuda.html",
+    "href": "pytorch/check_pytorch_cuda.html",
+    "title": "Check PyTorch installation",
+    "section": "",
+    "text": "Import pytorch and check if cuda is available.\n\nimport torch\ntorch.cuda.is_available()\n\nTrue\n\n\nPytorch will be able to convert to cuda tensor if (a) GPU is available, (b) the installed version of pytorch was compiled for GPU. In my case, the conda installation failed, pip3 installation instruction provided in the pytorch website worked.\n\ntorch.zeros(10).cuda()\n\ntensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], device='cuda:0')\n\n\n\n\n\n Back to top"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About Me",
