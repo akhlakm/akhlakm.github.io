@@ -30,8 +30,8 @@ website:
 format:
   html:
     theme:
-      light: cosmo
-      dark: darkly
+      light: theme.scss
+      dark: theme_dark.scss
     css: styles.css
     toc: true
     html-math-method: katex
