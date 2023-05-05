@@ -2,15 +2,15 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "About this site"
+    "text": "Hello! I am a graduate student at Yingling Research Group at NC State. My PhD research focuses on developing novel modeling method for ultra small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self assembly of nanomaterials. I’m proficient in large scale atomistic simulations and molecular modeling of magnetic and plasmonic nanoparticles.\nThank you for visiting!\n\nMy Google Scholar Profile\nConnect me via LinkedIn\nFollow me on ResearchGate \n\n\n\n\n Back to top"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "akhlakm.github.io",
+    "title": "Akhlak Mahmood",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Hello world\n\n\n\n Back to top"
   }
 ]
