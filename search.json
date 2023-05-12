@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "pytorch/check_pytorch_cuda.html",
-    "href": "pytorch/check_pytorch_cuda.html",
-    "title": "Check PyTorch installation",
-    "section": "",
-    "text": "Import pytorch and check if cuda is available.\n\nimport torch\ntorch.cuda.is_available()\n\nTrue\n\n\nPytorch will be able to convert to cuda tensor if (a) GPU is available, (b) the installed version of pytorch was compiled for GPU. In my case, the conda installation failed, pip3 installation instruction provided in the pytorch website worked.\n\ntorch.zeros(10).cuda()\n\ntensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], device='cuda:0')\n\n\n\n\n\n Back to top"
-  },
-  {
     "objectID": "pytorch/activation_functions.html",
     "href": "pytorch/activation_functions.html",
     "title": "Activation functions",
@@ -42,16 +35,44 @@
     "text": "Softmax function\n\n# create a softmax module to apply to the last dimension of the input tensor\nf = torch.nn.Softmax(dim=-1)\nx = torch.arange(-10, 10, step=1.0)\n\nplt.plot(x, f(x), 'k-', label = 'Softmax')\nplt.legend()\nplt.xlabel('x')\nplt.ylabel('f(x)')\nplt.show()\n\n\n\n\nSoftmax is useful for a vector input. The sum of the values for each element of the vector becomes 1.0\n\n# create a vector (rank 2 tensor) with 3 elements\nx = torch.randn(1, 3)\nx\n\ntensor([[-0.4259,  1.3028, -1.4466]])\n\n\n\n# apply softmax along the last dim (column)\nf = torch.nn.Softmax(dim=1)\ny = f(x)\ny\n\ntensor([[0.1430, 0.8055, 0.0515]])\n\n\n\n# verify the sum of the softmax values\ntorch.sum(y, dim=1)\n\ntensor([1.])"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
+    "objectID": "pytorch/check_pytorch_cuda.html",
+    "href": "pytorch/check_pytorch_cuda.html",
+    "title": "Check PyTorch installation",
     "section": "",
-    "text": "Hello! I am a graduate student at Yingling Research Group at NC State. My PhD research focuses on developing novel modeling method for ultra small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self assembly of nanomaterials. I’m proficient in large scale atomistic simulations and molecular modeling of magnetic and plasmonic nanoparticles.\nThank you for visiting!\n\nMy Google Scholar Profile\nConnect me via LinkedIn\nFollow me on ResearchGate \n\n\n\n\n Back to top"
+    "text": "Import pytorch and check if cuda is available.\n\nimport torch\ntorch.cuda.is_available()\n\nTrue\n\n\nPytorch will be able to convert to cuda tensor if (a) GPU is available, (b) the installed version of pytorch was compiled for GPU. In my case, the conda installation failed, pip3 installation instruction provided in the pytorch website worked.\n\ntorch.zeros(10).cuda()\n\ntensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], device='cuda:0')\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "huggingface/dolly-v2.html",
+    "href": "huggingface/dolly-v2.html",
+    "title": "Akhlak Mahmood",
+    "section": "",
+    "text": "import torch\nfrom transformers import pipeline\n\n/home/akhlak/micromamba/envs/pytorch/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html\n  from .autonotebook import tqdm as notebook_tqdm\n\n\n\nllm = pipeline(model=\"databricks/dolly-v2-3b\", device=0, trust_remote_code=True)\n\n\nllm(\"def print_hello(txt):\")\n\n[{'generated_text': 'Hello, world!'}]\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "huggingface/finetune_model.html",
+    "href": "huggingface/finetune_model.html",
+    "title": "Finetuning a model with Transformers",
+    "section": "",
+    "text": "import torch\nimport evaluate\nimport numpy as np\n\nfrom tqdm.auto import tqdm\nfrom torch.utils.data import DataLoader\nfrom datasets import load_dataset\nfrom transformers import AdamW\nfrom transformers import get_scheduler\nfrom transformers import AutoTokenizer, DataCollatorWithPadding\nfrom transformers import AutoModelForSequenceClassification\n\n\ncheckpoint = \"bert-base-uncased\"\nraw_datasets = load_dataset('glue', 'mrpc')\n\nFound cached dataset glue (/home/akhlak/.cache/huggingface/datasets/glue/mrpc/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)\n100%|██████████| 3/3 [00:00&lt;00:00, 907.92it/s]\n\n\n\ntokenizer = AutoTokenizer.from_pretrained(checkpoint)\n\ndef tokenize_function(subset):\n    return tokenizer(subset['sentence1'], subset['sentence2'],\n                     truncation=True)\n\n\ntokeninzed_datasets = raw_datasets.map(tokenize_function, batched=True)\ndata_collator = DataCollatorWithPadding(tokenizer=tokenizer)\n\nLoading cached processed dataset at /home/akhlak/.cache/huggingface/datasets/glue/mrpc/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad/cache-000c138c4db1edcb.arrow\nLoading cached processed dataset at /home/akhlak/.cache/huggingface/datasets/glue/mrpc/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad/cache-ae70e2242c4dfe9f.arrow\n\n\n\n# Update dataset for model, the classes should be in column 'labels'\ntokeninzed_datasets = tokeninzed_datasets.rename_column(\"label\", \"labels\")\n\n# Remove original raw columns\ntokeninzed_datasets = tokeninzed_datasets.remove_columns([\"sentence1\", \"sentence2\", \"idx\"])\n\n# Return pytorch tensors, not python lists\ntokeninzed_datasets.set_format(\"torch\")\n\n\ntrain_dataloader = DataLoader(tokeninzed_datasets['train'],\n                              shuffle=True, batch_size=8,\n                              collate_fn=data_collator)\neval_dataloader = DataLoader(tokeninzed_datasets['validation'],\n                             batch_size=8, collate_fn=data_collator)\n\n\n# Check dataloader batch\nfor batch in train_dataloader:\n    break\n{k : v.shape for k, v in batch.items()}\n\n{'labels': torch.Size([8]),\n 'input_ids': torch.Size([8, 70]),\n 'token_type_ids': torch.Size([8, 70]),\n 'attention_mask': torch.Size([8, 70])}\n\n\n\nmodel = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=2)\n\nSome weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight']\n- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\nSome weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\nYou should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n\n\n\n# Check model is working\noutputs = model(**batch)\nprint(outputs.loss, outputs.logits.shape)\n\ntensor(0.7214, grad_fn=&lt;NllLossBackward0&gt;) torch.Size([8, 2])\n\n\n\n# Optimizer\noptimizer = AdamW(model.parameters(), lr=5e-5)\n\n/home/akhlak/micromamba/envs/pytorch/lib/python3.11/site-packages/transformers/optimization.py:391: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning\n  warnings.warn(\n\n\n\nnum_epochs = 3\nnum_training_steps = num_epochs * len(train_dataloader)\nlr_scheduler = get_scheduler(\"linear\", optimizer=optimizer,\n                             num_warmup_steps=0,\n                             num_training_steps=num_training_steps)\nprint(num_training_steps)\n\n1377\n\n\n\ndevice = torch.device(\"cuda\") if torch.cuda.is_available() else torch.device(\"cpu\")\nmodel.to(device)\ndevice\n\ndevice(type='cuda')\n\n\n\nprogress_bar = tqdm(range(num_training_steps))\n\nmodel.train()\nfor epoch in range(num_epochs):\n    for batch in train_dataloader:\n        batch = { k : v.to(device) for k, v in batch.items()}\n        outputs = model(**batch)\n        loss = outputs.loss\n        loss.backward()\n\n        optimizer.step()\n        lr_scheduler.step()\n        optimizer.zero_grad()\n        progress_bar.update(1)\n\n100%|██████████| 1377/1377 [02:05&lt;00:00, 11.88it/s]\n\n\n\nmetric = evaluate.load(\"glue\", \"mrpc\")\nmodel.eval()\n\nfor batch in eval_dataloader:\n    batch = {k : v.to(device) for k, v in batch.items()}\n    with torch.no_grad():\n        outputs = model(**batch)\n\n    logits = outputs.logits\n    predictions = torch.argmax(logits, dim=-1)\n    metric.add_batch(predictions=predictions, references=batch['labels'])\n\nmetric.compute()\n\nDownloading builder script: 100%|██████████| 5.75k/5.75k [00:00&lt;00:00, 4.16MB/s]\n\n\n{'accuracy': 0.8676470588235294, 'f1': 0.9072164948453608}\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Akhlak Mahmood",
+    "section": "",
+    "text": "Hello! I am a graduate student at Yingling Research Group at NC State. My PhD research focuses on developing novel modeling method for ultra small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self assembly of nanomaterials. I’m proficient in large scale atomistic simulations and molecular modeling of magnetic and plasmonic nanoparticles.\nThank you for visiting!\n\nMy Google Scholar Profile\nConnect me via LinkedIn\nFollow me on ResearchGate \n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Current Projects",
+    "section": "",
+    "text": "List of projects I am currently working on.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
     "section": "",
     "text": "Hello! I am a graduate student at Yingling Research Group at NC State. My PhD research focuses on developing novel modeling method for ultra small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self assembly of nanomaterials. I’m proficient in large scale atomistic simulations and molecular modeling of magnetic and plasmonic nanoparticles.\nThank you for visiting!\n\nMy Google Scholar Profile\nConnect me via LinkedIn\nFollow me on ResearchGate \n\n\n\n\n Back to top"
   }
