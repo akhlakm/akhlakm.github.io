@@ -1,5 +1,7 @@
 ---
-title: Current Projects
+title: Projects
 ---
 
-List of projects I am currently working on.
+In the field of polymer informatics, I use NLP to perform data parsing, information extraction, database development, and knowledge curation. By leveraging the power of large language models, I am able to extract valuable insights from large amounts of data and use them to develop new and innovative polymer-based devices.
+
+In the field of nanotechnology, I specialize in developing innovative modeling methods for ultra-small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self-assembly of nanomaterials. Additionally, I am proficient in large-scale atomistic simulations and molecular modeling techniques for magnetic and plasmonic nanoparticles.

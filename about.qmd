@@ -1,20 +1,10 @@
 ---
-title: "About Me"
-date: last-modified
+title: "Contact"
+date-modified: last-modified
 tags: [about]
 toc: false
 ---
 
-Hello! I am a graduate student at [Yingling Research Group](https://www.mse.ncsu.edu/yingling/) at NC State.
-My PhD research focuses on developing novel modeling method for ultra small nanoparticles and applying machine learning and nanoinformatics to optimize external magnetic field guided self assembly of nanomaterials.
-I'm proficient in large scale atomistic simulations and molecular modeling of magnetic and plasmonic nanoparticles.
-
-Thank you for visiting!
-
-<!-- * [My CV]() -->
-* [My Google Scholar Profile](https://scholar.google.com/citations?user=S-uoOngAAAAJ&hl=en)
 * [Connect me via LinkedIn](https://www.linkedin.com/in/akhlakm/)
+* [My Google Scholar Profile](https://scholar.google.com/citations?user=S-uoOngAAAAJ&hl=en)
 * [Follow me on ResearchGate](https://www.researchgate.net/profile/Akhlak-Ul-Mahmood)
-<!-- * [My Current Research Projects]() -->
-<!-- * [Books I am Reading]() and [Books I have Read]() -->
-<!-- * [Hobbies and Personal Projects]() -->
