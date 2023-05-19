@@ -5,17 +5,15 @@ toc: false
 ---
 
 Hello and welcome to my website! I am a postdoctoral researcher at [Georgia Tech](https://ramprasad.mse.gatech.edu/) with expertise in polymer informatics.
-My research focuses on developing new and innovative polymer-based devices using a combination of nanotechnology and natural language processing (NLP).
+My research focuses on developing new and innovative polymer-based devices using a combination of computational modeling and natural language processing (NLP).
 
 My PhD research at [NC State](https://www.mse.ncsu.edu/yingling/) focused on developing innovative modeling methods for ultra-small colloidal and magnetic nanoparticles.
 In addition, I applied machine learning and nanoinformatics to optimize external magnetic field guided self-assembly of nanomaterials.
 
-My services include, but are not limited to:
+My expertise include, but are not limited to:
 
-- Consulting on projects related to nanotechnology and polymer informatics
-- Developing custom NLP tools and software for data analysis and modeling
-- Developing custom modeling tools and software
-- Providing technical expertise for scientific papers and reports
+- Developing novel methods for research related to nanotechnology and polymer informatics
+- Developing custom NLP tools and software for data extraction, analysis and predictive modeling
 - Collaborating on grant proposals and research projects
 
 I am dedicated to advancing the fields of nanotechnology and polymer informatics, and I am passionate about using cutting-edge technology to develop new and innovative solutions.
