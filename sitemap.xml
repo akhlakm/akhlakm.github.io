@@ -2,30 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://akhlakm.github.io/pytorch/activation_functions.html</loc>
-    <lastmod>2023-05-15T12:34:58.121Z</lastmod>
+    <lastmod>2023-05-23T16:17:51.271Z</lastmod>
+  </url>
+  <url>
+    <loc>https://akhlakm.github.io/pytorch/yelp_review.html</loc>
+    <lastmod>2023-05-23T16:17:53.971Z</lastmod>
   </url>
   <url>
     <loc>https://akhlakm.github.io/pytorch/check_pytorch_cuda.html</loc>
-    <lastmod>2023-05-15T12:35:00.217Z</lastmod>
+    <lastmod>2023-05-23T16:17:54.447Z</lastmod>
   </url>
   <url>
-    <loc>https://akhlakm.github.io/huggingface/dolly-v2.html</loc>
-    <lastmod>2023-05-15T12:35:00.561Z</lastmod>
+    <loc>https://akhlakm.github.io/Large language models/dolly-v2.html</loc>
+    <lastmod>2023-05-23T16:17:54.887Z</lastmod>
   </url>
   <url>
-    <loc>https://akhlakm.github.io/huggingface/finetune_model.html</loc>
-    <lastmod>2023-05-15T12:35:00.985Z</lastmod>
+    <loc>https://akhlakm.github.io/Large language models/AutoGPTQ_test.html</loc>
+    <lastmod>2023-05-23T16:17:55.427Z</lastmod>
+  </url>
+  <url>
+    <loc>https://akhlakm.github.io/Large language models/finetune_model.html</loc>
+    <lastmod>2023-05-23T16:17:55.951Z</lastmod>
   </url>
   <url>
     <loc>https://akhlakm.github.io/index.html</loc>
-    <lastmod>2023-05-15T12:35:01.397Z</lastmod>
+    <lastmod>2023-05-23T16:17:56.435Z</lastmod>
   </url>
   <url>
     <loc>https://akhlakm.github.io/projects.html</loc>
-    <lastmod>2023-05-15T12:35:01.753Z</lastmod>
+    <lastmod>2023-05-23T16:17:56.863Z</lastmod>
   </url>
   <url>
     <loc>https://akhlakm.github.io/about.html</loc>
-    <lastmod>2023-05-15T12:35:02.101Z</lastmod>
+    <lastmod>2023-05-23T16:17:57.303Z</lastmod>
   </url>
 </urlset>
