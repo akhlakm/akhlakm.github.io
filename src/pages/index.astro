@@ -1,17 +1,96 @@
 ---
+import Layout from '../layouts/Layout.astro'
 
+import { profile } from '@/settings'
+import { experiences, education, skills, publications, talks } from '@/data/cv'
+import type { Experience, Education, Publication } from '@/types/cv'
+import Hero from '@/components/ui/Hero.astro'
+import List from '@/components/ui/List.astro'
+import CvTimeline from '@/components/ui/CvTimeline.astro'
+import PublicationsList from '@/components/ui/PublicationsList.astro'
+import Headshot from '@/assets/headshot.jpg'
+
+const { fullName, title, institute, instituteUrl } = profile
+
+const orderElement = <T extends { time: string }>(a: T, b: T) => {
+	const presentValues = ['present', 'now', 'current', 'today']
+	if (presentValues.includes((a.time as string)?.split(' - ')[1]?.toLowerCase())) {
+		return -1
+	}
+	const dateA = new Date((a.time as string)?.split(' - ')[1])
+	const dateB = new Date((b.time as string)?.split(' - ')[1])
+	return dateB.getTime() - dateA.getTime()
+}
+
+const orderedExperiences: Experience[] =
+	experiences.length > 0 ? [...experiences].sort(orderElement) : []
+const orderedEducation: Education[] =
+	education.length > 0 ? [...education].sort(orderElement) : []
+const orderedPublications: Publication[] =
+	publications.length > 0 ? [...publications].sort(orderElement) : []
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<!-- Hero -->
+	<section id='about' class='flex items-center gap-12 border-b pb-12 scroll-mt-8'>
+		<Hero
+			fullName={fullName}
+			title={title}
+			institute={institute}
+			instituteUrl={instituteUrl}
+			profilePicture={Headshot}
+		/>
+	</section>
+
+	{
+		orderedExperiences.length > 0 && (
+			<section id='experience' class='mb-12 pt-12 scroll-mt-8'>
+				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>Experience</h2>
+				<CvTimeline elements={orderedExperiences} colored={true} />
+			</section>
+		)
+	}
+
+	{
+		orderedEducation.length > 0 && (
+			<section id='education' class='mb-12 scroll-mt-8'>
+				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>Education</h2>
+				<CvTimeline elements={orderedEducation} colored={true} />
+			</section>
+		)
+	}
+
+	{
+		skills.length > 0 && (
+			<section id='skills' class='mb-12 scroll-mt-8'>
+				<List listTitle='Skills' listItems={skills} />
+			</section>
+		)
+	}
+
+	{
+		orderedPublications.length > 0 && (
+			<section id='publications' class='mb-12 scroll-mt-8'>
+				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>Selected Publications</h2>
+				<PublicationsList elements={orderedPublications} />
+			</section>
+		)
+	}
+
+	{
+		talks.length > 0 && (
+			<section id='talks' class='mb-12 scroll-mt-8'>
+				<h2 class='text-2xl font-bold mb-6'>Invited Industry Talks</h2>
+				<div class='grid gap-6'>
+					{talks.map((t) => (
+						<div class='p-6 bg-base-200 rounded-xl text-base-content'>
+							<h3 class='text-xl font-semibold'>{t.title}</h3>
+							{t.location && <p class='italic text-base-content/70 mb-2'>{t.location}</p>}
+							<p class={t.location ? '' : 'mt-2'}>{t.description}</p>
+						</div>
+					))}
+				</div>
+			</section>
+		)
+	}
+</Layout>

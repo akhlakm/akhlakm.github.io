@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets'
+import {profile} from '../../settings'
+import SocialIcons from './SocialIcons.astro'
+import { template, social } from '@/settings'
+import Headshot from '@/assets/headshot.jpg'
+import ExternalLinkIcon from './ExternalLinkIcon.astro'
+
+const {fullName} = profile
+---
+<aside
+	class='px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col'
+>
+	<div class='flex flex-col my-8 justify-between h-full'>
+		<div>
+			<div class='flex justify-center items-center flex-col'>
+				<Image
+					class='mask mask-circle size-44 object-cover'
+					src={Headshot}
+					loading='eager'
+					fetchpriority='high'
+					alt={`Profile picture of ${fullName}`}
+				/>
+				<h1 class="text-lg font-black mt-8 hidden lg:block">{fullName}</h1>
+			</div>
+			<div class='mx-4 mt-16'>
+				<ul class='menu grow shrink menu-sm overflow-y-auto'>
+					<li><a href={`${template.base}/#about`} class='text-lg'>About Me</a></li>
+					<li><a href={`${template.base}/#experience`} class='text-lg'>Experience</a></li>
+					<li><a href={`${template.base}/#education`} class='text-lg'>Education</a></li>
+					<li><a href={`${template.base}/#skills`} class='text-lg'>Skills</a></li>
+					<li><a href={`${template.base}/#publications`} class='text-lg'>Publications</a></li>
+					<li><a href={`${template.base}/#talks`} class='text-lg'>Talks</a></li>
+					<li>
+						<a href={social.scholar} target='_blank' rel='noopener noreferrer' class='text-lg'>
+							<span>Google Scholar</span>
+							<ExternalLinkIcon />
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class='mx-4'>
+			<SocialIcons/>
+		</div>
+	</div>
+</aside>
