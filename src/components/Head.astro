@@ -1,5 +1,5 @@
 ---
-import {template} from '@/settings'
+import { template, profile, social } from '@/settings'
 interface Props {
 	title: string
 	description: string
@@ -9,6 +9,23 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const { title, description, image } = Astro.props
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: profile.fullName,
+	jobTitle: profile.title,
+	worksFor: profile.institute
+		? {
+				'@type': 'Organization',
+				name: profile.institute,
+				url: profile.instituteUrl || undefined,
+			}
+		: undefined,
+	url: canonicalURL.toString(),
+	image: new URL(image, Astro.url).toString(),
+	sameAs: Object.values(social).filter((v) => v && v.startsWith('http')),
+}
 ---
 
 <meta charset='utf-8' />
@@ -44,6 +61,9 @@ const { title, description, image } = Astro.props
 <meta property='twitter:title' content={title} />
 <meta property='twitter:description' content={description} />
 <meta property='twitter:image' content={new URL(image, Astro.url)} />
+
+<!-- Structured data -->
+<script type='application/ld+json' set:html={JSON.stringify(personSchema)} />
 
 <!-- Theme selector scripts -->
 <script is:inline>

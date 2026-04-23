@@ -33,7 +33,7 @@ export const template = {
 }
 
 export const seo = {
-	default_title: 'Akhlak Mahmood',
-	default_description: 'Personal academic website of Akhlak Mahmood.',
-	default_image: '/images/astro-academia.png',
+	default_title: 'Akhlak Mahmood — Polymer Informatics & AI-Accelerated Materials Discovery',
+	default_description: 'Materials scientist working on polymer informatics and AI-accelerated materials discovery. Industrial polymer design for packaging, coatings, fuel cells, batteries, and energy storage.',
+	default_image: '/og-image.jpg',
 }
